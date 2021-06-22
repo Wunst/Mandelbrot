@@ -28,4 +28,6 @@ void        meshFree(Mesh *mesh);
 char*       textLoad(const char *path);
 void        textFree(char *text);
 
+void        sleepMillis(unsigned millis);
+
 #endif /* end of include guard: MANDELBROT_H_INCLUDED */

@@ -5,8 +5,8 @@
 
 #include "mandelbrot.h"
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+static const int WINDOW_WIDTH = 800;
+static const int WINDOW_HEIGHT = 600;
 
 int main(int argc, char const *argv[]) {
     if(!glfwInit()) {
@@ -42,17 +42,12 @@ int main(int argc, char const *argv[]) {
         -1.0f, -1.0f,  0.0f,
     };
     Mesh *mesh = meshCreate(sizeof(vertices), vertices, 6);
-
-    char *vsSource = textLoad("resources/shader.vs");
-    char *fsSource = textLoad("resources/shader.fs");
-
+    
     Shader *shader = shaderCreate(vsSource, fsSource);
     
     float zoom = 1.0f;
     float tlx = -0.73f;
     float tly = 0.25f;
-    
-    struct timespec req = { 0, 16667 };
 
     while(!glfwWindowShouldClose(window)) {
         glfwPollEvents();
@@ -89,7 +84,8 @@ int main(int argc, char const *argv[]) {
         meshRender(mesh);
 
         glfwSwapBuffers(window);
-        nanosleep(&req, NULL);
+        
+        sleepMillis(17);
     }
 
     meshFree(mesh);
