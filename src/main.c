@@ -43,6 +43,9 @@ int main(int argc, char const *argv[]) {
     };
     Mesh *mesh = meshCreate(sizeof(vertices), vertices, 6);
     
+    char *vsSource = textLoad("resources/shader.vs");
+    char *fsSource = textLoad("resources/shader.fs");
+    
     Shader *shader = shaderCreate(vsSource, fsSource);
     
     float zoom = 1.0f;
@@ -53,22 +56,22 @@ int main(int argc, char const *argv[]) {
         glfwPollEvents();
         
         if(glfwGetKey(window, GLFW_KEY_ENTER)) {
-            zoom *= 1.005;
+            zoom *= 1.001;
         }
         if(glfwGetKey(window, GLFW_KEY_BACKSPACE)) {
-            zoom /= 1.005;
+            zoom /= 1.001;
         }
         if(glfwGetKey(window, GLFW_KEY_RIGHT)) {
-            tlx += 0.05 / zoom;
+            tlx += 0.005 / zoom;
         }
         if(glfwGetKey(window, GLFW_KEY_LEFT)) {
-            tlx -= 0.05 / zoom;
+            tlx -= 0.005 / zoom;
         }
         if(glfwGetKey(window, GLFW_KEY_UP)) {
-            tly += 0.05 / zoom;
+            tly += 0.005 / zoom;
         }
         if(glfwGetKey(window, GLFW_KEY_DOWN)) {
-            tly -= 0.05 / zoom;
+            tly -= 0.005 / zoom;
         }
         if(glfwGetKey(window, GLFW_KEY_ESCAPE)) {
             break;
