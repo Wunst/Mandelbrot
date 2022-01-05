@@ -12,5 +12,5 @@
 - The Makefile is written for a GNU environment, but you can change the variables to your compilers and flags
 
 ## How does it work?
-Most of the work is done in the shader. The C code just creates an OpenGL context, loads the shader, and then, each frame, passes the zoom and position of the camera to the shader and draws a quad over the entire window.
+Most of the work is done in the shader. The C code just creates an OpenGL context, loads the shader, and draws a shaded quad over the entire window.
 
